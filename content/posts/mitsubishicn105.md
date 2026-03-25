@@ -1,15 +1,23 @@
 +++
 date = '2026-03-14T22:12:30-04:00'
-draft = true
-title = 'Mitsubishicn105'
+draft = false
+title = 'Mitsubishicn105 to HomeAssistant'
 +++
 
-I recently installed a new HVAC system at my house with 3 floors including a basement. The system is comprised of 3 mini-splits upstairs and a central basement-unit for the bottom two floors. The basement unit is controlled via a separate thermostat, and each mini split has its own remote control. Although, two of the mini-splits are on the same outdoor condenser so it's a split/linked system.
+I recently installed a new HVAC system at my A-Frame house with an L-shaped addition. There are 2 floors. The system is comprised of 3 mini-splits upstairs and a central basement-unit for the bottom two floors. The basement unit is controlled via a separate thermostat, and each mini split has its own remote control. Although, two of the mini-splits are on the same outdoor condenser, so it's a split/linked system.
 
-In terms of wifi-based control, I can connect the downstairs theromstat to HomeKit and the independent mini-split upstairs to  Mitsubishin's Comfort App (previously known as Kumo Cloud). 
+One of the mini-splits is a Mitsubishi MSZ-FX06NL, and the branch boxed mini-splits are both the Mitsubishi MSZ-EX09NLW.
 
-Thankfully for me there is a great open solution for the mini-splits, https://github.com/echavet/MitsubishiCN105ESPHome. It seems my model numbers aren't sufficiently supported but all have the CN105 connector. I haven't worked with ESP32 boards but I have a couple of Raspeberry Pico boards that I do interface with through ESPHome in HomeAssistant. My enclosure skills are shit though.
+In terms of wifi-based control, I can connect the downstairs theromstat to HomeKit and the independent mini-split upstairs to  Mitsubishi's Comfort App (previously known as Kumo Cloud). Some basic research showed good support for ESPHome Assistant integration through the  use of the CN105 protocol common to the Mitsubishi mini-splits. Long story short, for risk mitigation, I decided to pay for the shortcut and buy pre-fab boards off of Etsy (https://github.com/tinwer-group/mahtanar/tree/main?tab=readme-ov-file)[Tinwer]. The board comes with a version of this firmware pre-installed (https://muart-group.github.io/)[muart], as opposed to the perhaps more widely supported alternative (https://github.com/echavet/MitsubishiCN105ESPHome)[https://github.com/echavet/MitsubishiCN105ESPHome]. The former seems to be a more first principles redesign of the CN105 protocol of which I know nothing about.
 
-After a bit more research I've found a more pre-packaged board off of Etsy which I am very tempted by, https://github.com/tinwer-group/mahtanar. I'm sure I could figure it out after awhile but I'd rather spend my time on other things right now. 
+Anyways, once they arrived I got to work disassembling my new mini-splits starting with the FX06NL which proved to be tricky. The 3-4 youtube videos covering this topic all had a simpler plastic panel design which made it easier to directly access the right panel. First I shut off the mini-splits breaker switch. For the FX06NL, in order to pull out the right panel to access the PCB, it is absolutely necessary to take off the left panel and the "front panel". The service manual gave some much needed hints and ended up being true to its word, which I found on ductless. Eventually I was able to remove all the necessary screws and find the necessary leverage with the plastic smudger to pry open key points. At times, I felt very close to breaking some plastic pieces so don't overforce anything! There were a few tricky parts like: figuring out to use the smudger to pry open the corner boxes, using the smudger and finger prys to pull up the top right plastic of the siding pieces to release the tab over the top. Then it was mostly a matter of loosening both sides and finding the tabs for the front panel and then left, front, right all came off together. 
 
+Eventually I was able to get at the PCB and the CN105 was there! It was not listed in the service manual suspiciously. My next problem was finding an appropriate place for the board with the 20mm wires I ordered. I should have ordered the 50mm wires, but I was able to tuck it underneath the bottom right side with a little cardboard buffer between other wires and power sheathing.
 
+The process for the two EX06NLW was similar but different. The plastic removal was also unique to the youtube videos I'd seen and the FX06NL. However, similar to the FX06NL, it did require full front panel removal to access the PCB under the right hand side of the indoor unit. The trickiest part after the FX06NL was getting the angle right for the single panel piece. What I did was try to loosen and then rotate the bottom out and finally the top attached to the wall came loose. I think the better way is to make sure you pop the tabs on the top and bottom before trying to totally take off. 
+
+Anyways, I didn't find any good descriptions or videos of these units. Sorry for not making youtube videos but feel free to reach out or create an issue if you have a question.
+
+In the end, all of the boards worked out of the box and were easily addable to ESPHome. I now have thermostat sensors and other metrics in my Home Assistant dashboards! A big bonus was that lifetime kWh is reported with both of my mitsubishi units as well as current input watts, which will help a lot with my Energy dashboard.
+
+For my branch boxes, the lifetime kWh usage is very different (e.g. 200 vs. 3). This sensor is not officially supported by the firmware so it is worth exploring whether my sensor is bad or perhaps the firmware is not handling this metric correctly. I am guessing that total usage may be a sum of these two numbers, but what exactly they correspond to I'm not sure. Maybe one is fan and the other is everything else? 
