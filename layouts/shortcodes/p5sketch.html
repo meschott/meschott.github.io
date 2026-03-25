@@ -1,0 +1,8 @@
+  {{ $id := printf "sketch-%d" (add 1 .Ordinal) }}
+  <div id="{{ $id }}"></div>
+  <script>
+  new p5(function(p) {
+    {{ .Inner | safeJS }}
+  }, '{{ $id }}');
+  </script>
+

@@ -1,6 +1,6 @@
 +++
 date = '2025-11-05T20:58:30-05:00'
-draft = true
+draft = false
 title = 'Get_town_meeting_minutes'
 +++
 
