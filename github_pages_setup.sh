@@ -1,5 +1,5 @@
 # Add GitHub remote
-git remote add origin https://github.com/mesnaround/mesnaround.github.io.git
+git remote add origin https://github.com/meschott/meschott.github.io.git
 
 # Create .gitignore
 cat > .gitignore << EOF

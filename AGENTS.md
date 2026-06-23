@@ -4,7 +4,7 @@ Guidance for AI coding agents working in this repo.
 
 ## Project
 
-- Hugo static site published to GitHub Pages at https://mesnaround.github.io/
+- Hugo static site published to GitHub Pages at https://meschott.github.io/
 - Theme: `hugo-theme-console` (vendored as a Hugo module, see `go.mod` / `.gitmodules`)
 - Config: `hugo.toml`
 - Content: `content/` (Markdown; `about.md`, `posts/`, gallery under `content/photos/` if present)

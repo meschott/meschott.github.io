@@ -19,14 +19,14 @@ git submodule add https://github.com/mrmierzejewski/hugo-theme-console.git theme
 
 
 # Init theme for site
-hugo mod init github.com/mesnaround/mesnaround.github.io
+hugo mod init github.com/meschott/meschott.github.io
 
 # Next declare the Console theme module as a dependency for your site.
 hugo mod get github.com/mrmierzejewski/hugo-theme-console
 
 
 cat << EOF >> hugo.toml
-baseURL = 'https://mesnaround.github.io/'
+baseURL = 'https://meschott.github.io/'
 languageCode = 'en-us'
 title = 'Mark Schott: Off Hours'
 theme = "hugo-theme-console"

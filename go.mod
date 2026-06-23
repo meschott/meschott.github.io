@@ -1,4 +1,4 @@
-module github.com/mesnaround/plugged-in-and-about
+module github.com/meschott/meschott.github.io
 
 go 1.25.3
 

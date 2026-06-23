@@ -1,6 +1,6 @@
-# mesnaround.github.io
+# meschott.github.io
 
-Mark Schott's personal Hugo site, deployed to GitHub Pages at https://mesnaround.github.io/.
+Mark Schott's personal Hugo site, deployed to GitHub Pages at https://meschott.github.io/.
 
 ## Stack
 
