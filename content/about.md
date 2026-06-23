@@ -4,7 +4,12 @@ draft = false
 title = 'About'
 +++
 
-
 ## About
+
 Here I will share some scratchpads for personal projects, air grievances, and reveal my naivety and ignobleness. Hopefully this is the start of something and will only grow into something better and more of interest to the reader over time.
 
+## Resume
+
+[Download my resume (PDF)](/resume.pdf)
+
+{{< pdf src="/resume.pdf" title="resume" height="900px" >}}

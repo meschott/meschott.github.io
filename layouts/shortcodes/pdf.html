@@ -1,0 +1,11 @@
+{{- /*
+  2026-06-22 Author: Claude Opus 4.7
+  Description: Embed a PDF with a fallback download link.
+  Usage: {{< pdf src="/resume.pdf" height="800px" >}}
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- $height := default "800px" (.Get "height") -}}
+{{- $title := default "PDF" (.Get "title") -}}
+<object data="{{ $src }}" type="application/pdf" width="100%" height="{{ $height }}" style="border:1px solid #444;">
+  <p>Your browser can't display the embedded PDF. <a href="{{ $src }}">Download {{ $title }}</a>.</p>
+</object>

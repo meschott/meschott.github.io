@@ -2,7 +2,7 @@
 title: "Trying Stockfish"
 
 date: '2026-02-05T16:17:27-04:00'
-draft: false
+draft: true
 
 ---
 
